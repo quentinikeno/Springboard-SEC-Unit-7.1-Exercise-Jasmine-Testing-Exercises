@@ -22,10 +22,16 @@ describe("Servers test (with setup and tear-down)", function () {
 		submitServerInfo();
 		updateServerTable();
 
-		const server1 = document.querySelectorAll("#server1 td");
+		const server1 = document.querySelectorAll("#serverTable tbody tr td");
 		expect(server1.length).toEqual(2);
 		expect(server1[0].innerText).toEqual("Alice");
 		expect(server1[1].innerText).toEqual("$0.00");
+	});
+
+	it("should append a new td", () => {
+		let tr = document.createElement("tr");
+		appendTd(tr, "test");
+		expect(tr.children.length).toEqual(1);
 	});
 
 	afterEach(function () {
