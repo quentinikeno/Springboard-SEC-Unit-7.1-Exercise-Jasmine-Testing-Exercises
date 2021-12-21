@@ -25,6 +25,13 @@ describe("helpers test (with setup and teardown", () => {
 		expect(calculateTipPercent(200, 40)).toEqual(20);
 	});
 
+	it("should add a delete button", () => {
+		let testTr = document.createElement("tr");
+		appendDeleteBtn(testTr);
+		expect(testTr.children.length).toEqual(1);
+		expect(testTr.firstChild.innerText).toEqual("X");
+	});
+
 	afterEach(() => {
 		allPayments = {};
 		paymentId = 0;

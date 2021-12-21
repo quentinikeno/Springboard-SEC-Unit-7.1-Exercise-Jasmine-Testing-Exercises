@@ -33,10 +33,11 @@ describe("payments test (with setup and teardown)", () => {
 		appendPaymentTable(curPayment);
 
 		let tds = document.querySelectorAll("#paymentTable tbody tr td");
-		expect(tds.length).toEqual(3);
+		expect(tds.length).toEqual(4);
 		expect(tds[0].innerText).toEqual("$100");
 		expect(tds[1].innerText).toEqual("$20");
 		expect(tds[2].innerText).toEqual("20%");
+		expect(tds[3].innerText).toEqual("X");
 	});
 
 	it("should not create a payment with empty inputs", () => {

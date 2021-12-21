@@ -1,26 +1,40 @@
-
 // accepts 'tipAmt', 'billAmt', 'tipPercent' and sums total from allPayments objects
 function sumPaymentTotal(type) {
-  let total = 0;
+	let total = 0;
 
-  for (let key in allPayments) {
-    let payment = allPayments[key];
+	for (let key in allPayments) {
+		let payment = allPayments[key];
 
-    total += Number(payment[type]);
-  }
+		total += Number(payment[type]);
+	}
 
-  return total;
+	return total;
 }
 
 // converts the bill and tip amount into a tip percent
 function calculateTipPercent(billAmt, tipAmt) {
-  return Math.round(100 / (billAmt / tipAmt));
+	return Math.round(100 / (billAmt / tipAmt));
 }
 
 // expects a table row element, appends a newly created td element from the value
 function appendTd(tr, value) {
-  let newTd = document.createElement('td');
-  newTd.innerText = value;
+	let newTd = document.createElement("td");
+	newTd.innerText = value;
 
-  tr.append(newTd);
+	tr.append(newTd);
+}
+
+// This function will create a ‘td’ with the value ‘X’, when clicked it will delete the table row it belongs to
+function appendDeleteBtn(tr) {
+	let newTd = document.createElement("td");
+	newTd.innerText = "X";
+	newTd.classList.add("delete");
+
+	tr.append(newTd);
+}
+
+function removeParent(event) {
+	if (event.target.className === "delete") {
+		event.target.parentElement.remove();
+	}
 }
